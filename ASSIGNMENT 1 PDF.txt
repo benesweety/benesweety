@@ -1,0 +1,49 @@
+                  ASIGNMENT-1
+Question:
+★ Build a smart home in wokwi with minimum 2 sensors, Led, buzzer.
+
+➔ Example: pir sensor for home security, servo motor for door lock
+
+system.
+
+➔ Hint: replicate tinkercad code and connections in wokwi and integrate
+
+both codes to a single code.
+Circuit diagram:
+
+
+
+
+Code:
+#define Buzzer 2
+#define Motion 14
+#define Temp 12
+#define LedPin 5
+void setup() {
+    // put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(LedPin, OUTPUT);
+pinMode(Buzzer, OUTPUT);
+pinMode(Temp, INPUT);
+pinMode(Motion, INPUT);
+}
+void loop() {
+    // put your main code here, to run repeatedly:
+    int motion=digitalRead(Motion);
+    if(motion==HIGH){
+        Serial.println("Motion Detected:");
+        digitalWrite(LedPin, HIGH);
+        digitalWrite(Buzzer, HIGH);
+        delay(1000);
+    }
+    else{
+        digitalWrite(LedPin, LOW);
+        digitalWrite(Buzzer, LOW);
+    }
+int temp=analogRead(Temp);
+    float temperature=((temp*5.0)/1023)*100;
+    Serial.print(temperature);
+    Serial.println("%C");
+}
+Output:
+
